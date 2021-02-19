@@ -1,0 +1,177 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet">
+    <title>Document</title>
+</head>
+
+<body>
+    <nav class="navbar" role="navigation" aria-label="main navigation" style="font-family: 'Comfortaa', cursive;">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="/index">
+                <h1 class="title">Share<span class="has-text-primary">:</span>y</h1>
+            </a>
+
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
+                data-target="navbarBasicExample">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+
+        <div id="navbarBasicExample" class="navbar-menu">
+            <div class="navbar-start">
+                <a class="navbar-item" href="/index">
+                    Home
+                </a>
+
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link">
+                        More
+                    </a>
+
+                    <div class="navbar-dropdown">
+                        <a class="navbar-item">
+                            About
+                        </a>
+                        <a class="navbar-item">
+                            Contact
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="navbar-end">
+                <div class="navbar-item">
+                    <div class="buttons">
+                        <a class="button is-primary" href="/index/signup">
+                            <strong>Sign up</strong>
+                        </a>
+                        <a class="button is-light" href="/index/signin">
+                            Log in
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+
+    <section class="section">
+        <div class="columns is-centered">
+            <div class="box">
+                <h1 class="title is-2 has-text-centered">Register</h1>
+                <form action="/index/signup" method="post" id="form" style="width: 25rem;">
+                    <div class="field column">
+                        <label class="label">Email</label>
+                        <div class="control has-icons-left">
+                            <input class="input is-primary" type="email" placeholder="Ex. john.smith@email.com"
+                                name="email">
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-envelope"></i>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="field column">
+                        <label class="label">Full name</label>
+                        <div class="control has-icons-left">
+                            <input class="input is-primary" type="text" placeholder="Ex. John Smith" name="fullname">
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-id-card"></i>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="field column">
+                        <label class="label">Username</label>
+                        <div class="control has-icons-left">
+                            <input class="input is-primary" type="text" placeholder="Ex. TheLegend27" name="user">
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-user"></i>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="field column">
+                        <label class="label">Password</label>
+                        <div class="control has-icons-left">
+                            <input class="input is-primary" type="password" placeholder="At least 6 characters"
+                                name="password">
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-lock"></i>
+                            </span>
+                        </div>
+                        <br>
+                        <div class="control has-icons-left">
+                            <input class="input is-primary" type="password" placeholder="Repeat password" name="testPassword">
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-redo"></i>
+                            </span>
+                        </div>
+                    </div>
+
+
+                    <button class="button submit is-primary">Done</button>
+                    <a class="button is-danger" href="/index">Back</a>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <div class="container is-max-desktop">
+        <% switch (error) {
+            case 1: %>
+                <div class="notification is-danger is-light">
+                    E-mail field is empty.
+                </div>
+        <% break;
+            case 2: %>
+                <div class="notification is-danger is-light">
+                    Full name field is empty.
+                </div>
+        <% break;
+            case 3: %>
+                <div class="notification is-danger is-light">
+                    Username field is empty.
+                </div>
+        <% break;
+            case 4: %>
+                <div class="notification is-danger is-light">
+                    Password has to be at least 6 characters.
+                </div>
+        <% break;
+            case 5: %>
+                <div class="notification is-danger is-light">
+                    Passwords doesn't match.
+                </div>
+        <% break;
+            case 6: %>
+                <div class="notification is-danger is-light">
+                    The username you entered isn't unique.
+                </div>
+        <% break;
+            case 7: %>
+                <div class="notification is-danger is-light">
+                    The email you entered isn't unique.
+                </div>
+        <% break; } %>
+    </div>
+
+    <footer class="footer" style="font-family: 'Comfortaa', cursive;">
+        <div class="content has-text-centered">
+          <p>
+            <strong>Share:y</strong> by <a>Robin Widjeback</a>.
+          </p>
+        </div>
+      </footer>
+</body>
+
+<script defer src="https://kit.fontawesome.com/a9c4c9de9b.js" crossorigin="anonymous"></script>
+
+</html>

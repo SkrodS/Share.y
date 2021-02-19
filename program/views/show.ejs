@@ -1,0 +1,140 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet">
+    <title>Document</title>
+</head>
+
+<body>
+    <nav class="navbar" role="navigation" aria-label="main navigation" style="font-family: 'Comfortaa', cursive;">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="/index">
+                <h1 class="title">Share<span class="has-text-primary">:</span>y</h1>
+            </a>
+
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
+                data-target="navbarBasicExample">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+
+        <div id="navbarBasicExample" class="navbar-menu">
+            <div class="navbar-start">
+                <a class="navbar-item" href="/index">
+                    Home
+                </a>
+
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link">
+                        More
+                    </a>
+
+                    <div class="navbar-dropdown">
+                        <a class="navbar-item">
+                            About
+                        </a>
+                        <a class="navbar-item">
+                            Contact
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="navbar-end">
+                <div class="navbar-item">
+                    <div class="buttons">
+                        <form action="/logout?_method=put" method="post">
+                            <button class="button submit is-primary">
+                                <strong style="font-family: 'Comfortaa', cursive;">Log out</strong>
+                            </button>
+                        </form>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <br>
+
+    <div class="columns is-centered">
+        <div class="box">
+            <h1 class="title is-2 has-text-centered">Welcome, <a href="/index/<%= user._id %>"><span class="has-text-primary" style="text-decoration: underline;"><%= user.user %></span></a>! <span class="text-icon is-small"><i class="fas fa-smile-wink"></i></span></h1>
+        </div>
+    </div>
+    <br>
+
+    <div class="columns is-centered is-half">
+        <div class="box column is-one-third ml-5" style="height: min-content;">
+            <h2 class="title is-3 has-text-centered">Create your own post:</h2>
+            <form action="/index/post" method="post" id="form">
+                <div class="field column">
+                    <div class="control has-icons-left">
+                        <input class="input is-primary is-medium" type="text" placeholder="An interesting title" name="title">
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-heading"></i>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="field column">
+                    <div class="control has-icons-left">
+                        <textarea class="textarea is-large is-primary" placeholder="Your message " name="content"></textarea>
+                    </div>
+                </div>
+
+                <div class="control has-icons-right has-text-centered">
+                    <button class="button submit is-primary is-large"><strong class="mr-2">Post</strong>
+                        <span class="icon-text is-small is-right has-text-warning">
+                            <i class="fas fa-paper-plane"></i>
+                        </span>
+                    </button>
+                </div>
+            </form>
+            <div class="container is-max-desktop">
+                <% if (error) { %>
+                        <div class="notification is-danger is-light">
+                            Don't leave any of the fields empty.
+                        </div>
+                <% } %>
+            </div>
+            <br>
+        </div>
+        <div class="box column ml-5 mr-5 p-6">
+            <h1 class="title is-3 ml-2">Recent posts:</h1>
+            <% const sortedPosts = data.sort((a, b) => b.date - a.date); %>
+            <% sortedPosts.forEach(post => { %>
+                <article class="message is-primary is-medium">
+                    <div class="message-header">
+                        <h2 class="title is-3"><%= post.title %></h2>
+                        <p class="content is-small has-text-centered"><%= post.date %></p>
+                    </div>
+                    <div class="message-body is-max-desktop">
+                        <subtitle class="subtitle"><%= post.content %></subtitle> <br><br>
+                        This was posted by: <a href="/index/<%= post.authorId %>"><%= post.author %></a>
+                    </div>
+                </article>
+            <% }); %>
+            <h3 class="title is-5 has-text-centered">This is the beginning of Share:y</h3>
+        </div>
+    </div>
+    
+
+
+    <footer class="footer" style="font-family: 'Comfortaa', cursive;">
+        <div class="content has-text-centered">
+          <p>
+            <strong>Share:y</strong> by <a>Robin Widjeback</a>.
+          </p>
+        </div>
+      </footer>
+</body>
+
+<script defer src="https://kit.fontawesome.com/a9c4c9de9b.js" crossorigin="anonymous"></script>
+
+</html>
